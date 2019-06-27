@@ -1,0 +1,59 @@
+name:                android-hs-mobile-common
+version:             0.1.0.0
+github:              "Github username here/android-hs-mobile-common"
+license:             BSD3
+author:              "Author name here"
+maintainer:          "Author email here"
+copyright:           "2019 Author name here"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            App category here
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/Github username here/android-hs-mobile-common#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+  dependencies:
+    - directory
+    - bytestring
+    - utf8-string
+    - regex-posix
+    - haskeline
+    - zlib
+  #extra-include-dirs: [/Users/lihanguang/dev_kit/android_sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/include]
+  extra-lib-dirs: [/Users/lihanguang/dev_kit/android_sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib]
+  extra-libraries:
+    - log
+
+executables:
+  android-hs-mobile-common-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - android-hs-mobile-common
+
+tests:
+  android-hs-mobile-common-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - android-hs-mobile-common
